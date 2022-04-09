@@ -3,13 +3,14 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyles from './styles/global';
-import { WinesList } from './components/WinesList';
 import theme from './styles/theme';
+
+import { Routes } from './routes';
 
 const App = () => (
   <ThemeProvider theme={theme}>
     <QueryClientProvider client={new QueryClient()}>
-      <WinesList />
+      <Routes />
     </QueryClientProvider>
 
     <GlobalStyles />
