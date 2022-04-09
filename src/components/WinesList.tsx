@@ -6,7 +6,7 @@ export const WinesList = () => {
   return (
     <div>
       {data?.map(wine => (
-        <p>{wine.title}</p>
+        <h1>{wine.title}</h1>
       ))}
     </div>
   )
