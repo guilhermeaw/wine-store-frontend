@@ -17,6 +17,11 @@ const theme = createTheme({
     fontFamily: "'Anek Tamil', sans-serif",
     h1: {
       fontWeight: 600,
+      fontSize: '2rem'
+    },
+    h2: {
+      fontWeight: 600,
+      fontSize: '2rem'
     },
     button: {
       textTransform: 'none'

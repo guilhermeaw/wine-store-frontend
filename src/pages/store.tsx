@@ -1,13 +1,11 @@
-import { useAuth } from "../store/Auth";
+import { Header } from "../components/Header";
+import { WinesList } from "../components/WinesList";
 
 export const StorePage = () => {
-  const {signOut} = useAuth();
-
-  const handleClick = () => {
-    signOut();
-  }
-
   return (
-    <button onClick={handleClick}>store</button>
+    <>
+      <Header />
+      <WinesList />
+    </>
   )
 }

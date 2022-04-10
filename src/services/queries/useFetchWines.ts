@@ -1,10 +1,7 @@
 import { useQuery } from "react-query"
 
+import { Wine } from "../../models/Wine";
 import { api } from "../api"
-
-type Wine = {
-  title: string
-}
 
 export const useFetchWines = () => {
   return useQuery('wines', () => (
