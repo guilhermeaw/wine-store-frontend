@@ -1,11 +1,16 @@
 import React from "react";
 
 import { AuthProvider } from './Auth';
+import { CartProvider } from "./Cart";
 
 type AppProviderProps = {
-  children: React.ReactNode
+  children: JSX.Element
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => (
-  <AuthProvider>{children}</AuthProvider>
+  <AuthProvider>
+    <CartProvider>
+      {children}
+    </CartProvider>
+  </AuthProvider>
 )

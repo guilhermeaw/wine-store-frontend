@@ -1,7 +1,7 @@
 import { Button, Card, Divider, Grid, Typography } from "@mui/material";
-import { useCart } from "../../hooks/useCart";
 
 import { Wine } from "../../models/Wine";
+import { useCart } from "../../store/Cart";
 
 type WineItemProps = {
   wine: Wine

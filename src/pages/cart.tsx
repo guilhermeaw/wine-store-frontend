@@ -2,10 +2,10 @@ import { Button, Card, Typography } from "@mui/material";
 
 import { Header } from "../components/Header"
 import { ContentWrapper } from '../components/ContentWrapper';
-import { useCart } from "../hooks/useCart";
+import { useCart } from "../store/Cart";
 
 export const CartPage = () => {
-  const { getCartItems, increment, decrement } = useCart();
+  const { products, increment, decrement } = useCart();
 
   return (
     <>
@@ -17,7 +17,7 @@ export const CartPage = () => {
         </Card>
 
         {
-          getCartItems()?.map(cartItem => (
+          products?.map(cartItem => (
             <Card key={cartItem.id} sx={{ padding: '1rem 2rem', marginBottom: '1rem' }}>
               <Typography>{cartItem.title}</Typography>
               <Button onClick={() => decrement(cartItem.id)} variant="contained">-</Button>
