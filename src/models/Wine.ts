@@ -3,4 +3,5 @@ export interface Wine {
   title: string
   description: string
   imageUrl: string
+  price: number
 }

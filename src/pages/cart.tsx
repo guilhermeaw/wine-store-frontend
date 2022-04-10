@@ -1,9 +1,12 @@
-import { Card, Typography } from "@mui/material";
+import { Button, Card, Typography } from "@mui/material";
 
 import { Header } from "../components/Header"
 import { ContentWrapper } from '../components/ContentWrapper';
+import { useCart } from "../hooks/useCart";
 
 export const CartPage = () => {
+  const { getCartItems, increment, decrement } = useCart();
+
   return (
     <>
       <Header />
@@ -13,9 +16,16 @@ export const CartPage = () => {
           <Typography>Aqui você pode consultar todos os itens que você já adicionou ao carrinho.</Typography>
         </Card>
 
-        <Card sx={{ padding: '1rem 2rem', marginBottom: '1rem' }}>
-          Item 1
-        </Card>
+        {
+          getCartItems()?.map(cartItem => (
+            <Card key={cartItem.id} sx={{ padding: '1rem 2rem', marginBottom: '1rem' }}>
+              <Typography>{cartItem.title}</Typography>
+              <Button onClick={() => decrement(cartItem.id)} variant="contained">-</Button>
+              <Button onClick={() => increment(cartItem.id)} variant="contained">+</Button>
+              <Typography>Quantidade: {cartItem.quantity}</Typography>
+            </Card>
+          ))
+        }
       </ContentWrapper>
     </>
   )
