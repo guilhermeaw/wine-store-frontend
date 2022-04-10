@@ -22,22 +22,24 @@ export const LoginPage = () => {
     }
 
     await signIn({ login, password });
-    console.log('afterSignIn')
     navigate('/store');
   }
 
   return (
       <Grid container style={{ height: '100vh' }}>
-        <Grid item xs={6} style={{ background: '#FF385C' }}>
+        <Grid item xs={6} sx={{ background: '#FF385C' }}>
+          <div style={{ height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Typography variant="h2" color="#FFF" fontSize="4rem">Wine Store</Typography>
+          </div>
         </Grid>
 
-        <Grid item xs={6} padding='3rem' alignItems='center' justifyContent='center'>
-          <Typography variant="h1" fontSize="2rem">Faça seu login</Typography>
+        <Grid sx={{ padding: '3rem', margin: 'auto' }} item xs={6}>
+          <Typography variant="h1">Faça seu login</Typography>
 
           <form onSubmit={handleLogin}>
             <FormGroup>
-              <TextField inputRef={loginRef} id="login" name="login" label="Login" variant="outlined" required size='small' />
-              <TextField inputRef={passwordRef} type="password" id="password" name="password" label="Senha" variant="outlined" required size="small" />
+              <TextField sx={{ margin: '1rem 0' }} inputRef={loginRef} id="login" name="login" label="Login" variant="outlined" required size='small' />
+              <TextField sx={{ marginBottom: '1.5rem' }} inputRef={passwordRef} type="password" id="password" name="password" label="Senha" variant="outlined" required size="small" />
               <Button type="submit" variant="contained">Entrar</Button>
             </FormGroup>
           </form>
