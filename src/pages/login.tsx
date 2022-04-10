@@ -1,13 +1,15 @@
 import React, { useRef } from 'react';
 import { Grid, Typography, TextField, Button, FormGroup } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-import { useLogin } from '../services/mutations';
+import { useAuth } from '../store/Auth';
 
 export const LoginPage = () => {
   const loginRef = useRef(null) as React.RefObject<HTMLInputElement>;
   const passwordRef = useRef(null) as React.RefObject<HTMLInputElement>;
 
-  const loginMutation = useLogin();
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -19,9 +21,8 @@ export const LoginPage = () => {
       return;
     }
 
-    loginMutation.mutate({ login, password }, {
-      onSuccess: ({ token, user }) => {console.log({ token, user })}
-    });
+    await signIn({ login, password });
+    navigate('/store');
   }
 
   return (

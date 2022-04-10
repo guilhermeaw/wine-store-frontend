@@ -1,14 +1,11 @@
 import { useMutation } from "react-query"
 
+import { User } from "../../models/User"
 import { api } from "../api"
 
 type AuthCredentials = {
   login: string
   password: string
-}
-
-type User = {
-  id: number
 }
 
 type SessionValues = {
