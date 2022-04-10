@@ -22,6 +22,7 @@ export const LoginPage = () => {
     }
 
     await signIn({ login, password });
+    console.log('afterSignIn')
     navigate('/store');
   }
 

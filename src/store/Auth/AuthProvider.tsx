@@ -31,16 +31,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const loginMutation = useLogin();
 
   const signIn = useCallback(async ({ login, password }) => {
-    loginMutation.mutate({ login, password }, {
-      onSuccess: ({ token, user }) => {
-        localStorage.setItem('@WineStore:token', token);
-        localStorage.setItem('@WineStore:user', JSON.stringify(user));
+    const { token, user } = await loginMutation.mutateAsync({ login, password });
 
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    localStorage.setItem('@WineStore:token', token);
+    localStorage.setItem('@WineStore:user', JSON.stringify(user));
 
-        setData({ token, user });
-      }
-    });
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    setData({ token, user });
   }, [loginMutation]);
 
   const signOut = useCallback(() => {
