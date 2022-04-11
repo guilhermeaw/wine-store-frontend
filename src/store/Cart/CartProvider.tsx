@@ -33,48 +33,59 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       const newProductValue = { ...product, quantity };
 
       if (productExists) {
-        setProducts(
-          products.map(productObj =>
+        setProducts(prevState => {
+          const newState = prevState.map(productObj =>
             productObj.id === product.id ? newProductValue : productObj,
-          ),
-        );
-      } else {
-        setProducts([...products, newProductValue]);
-      }
+          );
+          
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+          return newState;
+        });
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+        return;
+      } 
+
+      setProducts(prevState => {
+        const newState = [...prevState, newProductValue];
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+        return newState;
+      });
     },
     [products],
   );
 
   const increment = useCallback(
     async (id: number) => {
-      setProducts(
-        products.map(product =>
+      setProducts(prevState => {
+        const newState = prevState.map(product =>
           product.id === id
             ? { ...product, quantity: product.quantity + 1 }
             : product,
-        ),
-      );
+        )
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+        return newState;
+      });
+
     },
     [products],
   );
 
   const decrement = useCallback(
-    async (id: number) => {
-      setProducts(
-        products
+    (id: number) => {
+      setProducts(prevState => {
+        const newState = prevState
           .map(product =>
             product.id === id
               ? { ...product, quantity: product.quantity - 1 }
               : product,
           )
-          .filter(product => product.quantity > 0),
-      );
+          .filter(product => product.quantity > 0)
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+          return newState;
+      });
     },
     [products],
   );
