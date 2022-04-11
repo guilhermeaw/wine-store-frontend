@@ -5,13 +5,14 @@ import { PrivateRoute } from './PrivateRoute';
 import { LoginPage } from '../pages/login';
 import { StorePage } from '../pages/store';
 import { CartPage } from '../pages/cart';
+import { DashboardPage } from '../pages/dashboard';
 
 export const Routes = () => (
   <BrowserRouter>
     <RouteList>
       <Route path="/login" element={<LoginPage />} />
       <Route
-        path="/store"
+        path="/"
         element={
           <PrivateRoute>
             <StorePage />
@@ -23,6 +24,14 @@ export const Routes = () => (
         element={
           <PrivateRoute>
             <CartPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute admin>
+            <DashboardPage />
           </PrivateRoute>
         }
       />

@@ -4,9 +4,19 @@ import { useAuth } from "../store/Auth";
 
 type PrivateRouteProps = {
   children: JSX.Element
+  admin?: boolean
 }
 
-export const PrivateRoute = ({ children }: PrivateRouteProps) => {
+export const PrivateRoute = ({ children, admin = false }: PrivateRouteProps) => {
   const { user } = useAuth();
-  return !!user ? children : <Navigate to="/login" />;
+  
+  if (!!user) {
+    if (!!admin && user.role !== 'admin') {
+      return <Navigate to="/" />;
+    }
+
+    return children;
+  }
+
+  return <Navigate to="/login" />;
 }
