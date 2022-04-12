@@ -7,6 +7,9 @@ export const Header = styled.header`
   left: 0;
   height: 4rem;
   width: 100%;
+  z-index: 2;
+  background-color: #FFF;
+  border-bottom: 1px solid #ddd;
 
   display: flex;
 `;

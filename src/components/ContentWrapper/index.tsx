@@ -8,7 +8,7 @@ type ContentWrapperProps = {
 
 export const ContentWrapper = ({children}: ContentWrapperProps) => (
   <S.ContentWrapper>
-    <Container maxWidth="xl">
+    <Container sx={{ padding: '2rem 0' }} maxWidth="xl">
       {children}
     </Container>
   </S.ContentWrapper>
