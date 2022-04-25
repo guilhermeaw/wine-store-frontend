@@ -1,4 +1,4 @@
-import { Button, Card, Typography } from "@mui/material";
+import { Button, Card, Stack, Typography } from "@mui/material";
 
 import { Header } from "../components/Header"
 import { ContentWrapper } from '../components/ContentWrapper';
@@ -19,10 +19,17 @@ export const CartPage = () => {
         {
           products?.map(cartItem => (
             <Card key={cartItem.id} sx={{ padding: '1rem 2rem', marginBottom: '1rem' }}>
-              <Typography>{cartItem.title}</Typography>
-              <Button onClick={() => decrement(cartItem.id)} variant="contained">-</Button>
-              <Button onClick={() => increment(cartItem.id)} variant="contained">+</Button>
-              <Typography>Quantidade: {cartItem.quantity}</Typography>
+              <Stack direction="row">
+                <div style={{ width: '100%' }}>
+                  <Typography variant="h2">{cartItem.title}</Typography>
+                  <Typography>Quantidade: {cartItem.quantity}</Typography>
+                </div>
+                
+                <div style={{ display: 'flex' }}>
+                  <Button sx={{ marginRight: '0.5rem' }} onClick={() => decrement(cartItem.id)} variant="contained">-</Button>
+                  <Button onClick={() => increment(cartItem.id)} variant="contained">+</Button>
+                </div>
+              </Stack>
             </Card>
           ))
         }
