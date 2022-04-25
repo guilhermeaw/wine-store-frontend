@@ -1,7 +1,7 @@
 import { Button, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
 
 import { useAuth } from "../../store/Auth";
+import { RouterLink } from "../RouterLink";
 
 import * as S from './styles';
 
@@ -17,14 +17,14 @@ export const Header = () => {
       <S.HeaderContainer maxWidth="xl" sx={{ display: 'flex' }}>
         <Typography variant="h1" fontSize='1rem'>Wine Store</Typography>
         <nav>
-          <Link to='/'>
+          <RouterLink to='/'>
             <Button>Home</Button>
-          </Link>
+          </RouterLink>
 
           {user.role === 'admin' && (
-            <Link to='/dashboard'>
+            <RouterLink to='/dashboard'>
               <Button>Dashboard</Button>
-            </Link>
+            </RouterLink>
           )}
         </nav>
         <Button variant="outlined" onClick={handleClick}>Logout</Button>

@@ -22,7 +22,7 @@ export const LoginPage = () => {
     }
 
     await signIn({ login, password });
-    navigate('/store');
+    navigate('/');
   }
 
   return (
