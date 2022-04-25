@@ -1,4 +1,4 @@
-import { Button } from "@mui/material"
+import { Button, Card, Typography } from "@mui/material"
 
 import { ContentWrapper } from "../components/ContentWrapper"
 import { Header } from "../components/Header"
@@ -10,7 +10,11 @@ export const DashboardPage = () => {
             <Header />
             <ContentWrapper>
                 <RouterLink to="/new-product">
-                    <Button variant="contained">Adicionar</Button>
+                    <Card sx={{ padding: '1rem' }}>
+                        <Typography variant="h2">Adicionar vinho</Typography>
+                        <Typography variant="subtitle1">Clique no botão abaixo para acessar o formulário de adição de vinhos</Typography>
+                        <Button variant="contained">Adicionar</Button>
+                    </Card>
                 </RouterLink>
             </ContentWrapper>
         </>
