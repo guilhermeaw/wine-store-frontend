@@ -1,4 +1,5 @@
-import { Button, Typography } from "@mui/material";
+import { Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 import { useAuth } from "../../store/Auth";
 import { RouterLink } from "../RouterLink";
@@ -27,7 +28,18 @@ export const Header = () => {
             </RouterLink>
           )}
         </nav>
-        <Button variant="outlined" onClick={handleClick}>Logout</Button>
+        
+        <Stack direction="row" spacing={2}>
+          <Tooltip title="Carrinho">
+            <IconButton>
+              <RouterLink to="/cart">
+                <ShoppingCartOutlinedIcon color="primary" />
+              </RouterLink>
+            </IconButton>
+          </Tooltip>
+
+          <Button variant="outlined" onClick={handleClick}>Logout</Button>
+        </Stack>
       </S.HeaderContainer>
     </S.Header>
   )

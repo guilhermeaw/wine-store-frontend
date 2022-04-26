@@ -7,7 +7,7 @@ import { WineItem } from "../WineItem";
 
 export const WinesList = () => {
   const { data } = useFetchWines();
-
+  
   return (
     <ContentWrapper>
       <Card sx={{ padding: '1rem 2rem', marginBottom: '2rem' }}>

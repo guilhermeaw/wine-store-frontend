@@ -4,7 +4,7 @@ import { red } from '@mui/material/colors';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#FF385C',
+      main: '#953a44',
     },
     secondary: {
       main: '#F7F7F7',
@@ -12,6 +12,9 @@ const theme = createTheme({
     error: {
       main: red.A400,
     },
+    background: {
+      paper: '#f7f7f7'
+    }
   },
   typography: {
     fontFamily: "'Anek Tamil', sans-serif",

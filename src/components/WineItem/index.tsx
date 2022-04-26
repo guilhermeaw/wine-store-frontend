@@ -30,7 +30,7 @@ export const WineItem = ({ wine }: WineItemProps) => {
   return (
     <Grid item xs={4}>
       <Card sx={{ display: 'flex', flexDirection: 'column', padding: '1rem' }}>
-        <img src={imageUrl} alt="Imagem de um vinho" height="120px" width="120px" style={{ alignSelf: 'center' }} />
+        <img src={imageUrl} alt="Imagem de um vinho" height="120px" style={{ alignSelf: 'center' }} />
         <Divider sx={{ margin: '1.5rem 0' }} />
         <div>
           <Typography variant="h2">{title}</Typography>
